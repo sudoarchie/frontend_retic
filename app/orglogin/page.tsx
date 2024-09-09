@@ -6,6 +6,7 @@ import { Navbar } from "../components/Navbar";
 import { InputField } from "../components/Inputfield";
 import { PrimaryButton } from "../components/PrimaryButton";
 import { useForm } from "react-hook-form";
+import EventLogin from "@/utils/mutations/eventLogin";
 
 export default function OrgLogin() {
   const {
@@ -13,9 +14,12 @@ export default function OrgLogin() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
-  const onSubmit = (data: any) => {
-    console.log(data); // Logs form data
+  const { mutate, data } = EventLogin();
+  const onSubmit = async (info: any) => {
+    console.log(info); // Logs form info
+    await mutate(info);
+    console.log(data);
+    localStorage.setItem("eventOrganiserToken", data.token);
   };
 
   return (

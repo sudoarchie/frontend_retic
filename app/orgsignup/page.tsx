@@ -6,6 +6,7 @@ import { Navbar } from "../components/Navbar";
 import { InputField } from "../components/Inputfield";
 import { PrimaryButton } from "../components/PrimaryButton";
 import { useForm } from "react-hook-form";
+import EventSignup from "@/utils/mutations/eventSignup";
 
 export default function OrgSignup() {
   const {
@@ -13,9 +14,10 @@ export default function OrgSignup() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
-  const onSubmit = (data: any) => {
-    console.log(data); // Logs form data
+  const { mutate } = EventSignup();
+  const onSubmit = async (info: any) => {
+    console.log(info); // Logs form data
+    await mutate(info);
   };
 
   return (
@@ -49,7 +51,7 @@ export default function OrgSignup() {
                       placeholder="John Smith"
                       className="w-full sm:w-[80%] mx-auto sm:mx-0"
                       type="text"
-                      name="fullName"
+                      name="name"
                       register={register}
                     />
                     {errors.fullName?.message &&
