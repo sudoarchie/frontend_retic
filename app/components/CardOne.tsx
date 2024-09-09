@@ -1,6 +1,6 @@
 import React from "react";
-import { ArrowUpRight } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
 
 interface card {
   title: string;
@@ -34,12 +34,14 @@ export function CardOne({ title, discription, image, url }: card) {
             #Laptop
           </span>
         </div> */}
-        <button
-          type="button"
-          className="mt-4 w-full rounded-sm bg-primary px-2 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-primary/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-        >
-          Buy Now
-        </button>
+        <Link href={url}>
+          <button
+            type="button"
+            className="mt-4 w-full rounded-sm bg-primary px-2 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-primary/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+          >
+            Buy Now
+          </button>
+        </Link>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { BackgroundLines } from "./components/background-lines";
+// import { BackgroundLines } from "./components/background-lines";
 import { StickyScroll } from "./components/sticky-scroll-reveal";
 import { BackgroundGradientAnimation } from "./components/background-gradient-animation";
 import { Navbar } from "./components/Navbar";

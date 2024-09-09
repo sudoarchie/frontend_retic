@@ -4,7 +4,7 @@ import graphicsLogin from "@/public/8ff238e5b5acb1cf34f2dd1e1e2bcbea.png";
 import Link from "next/link";
 
 import { Navbar } from "../components/Navbar";
-import { TextAreaField } from "../components/TextAreaField";
+// import { TextAreaField } from "../components/TextAreaField";
 import { InputField } from "../components/Inputfield";
 import { PrimaryButton } from "../components/PrimaryButton";
 
