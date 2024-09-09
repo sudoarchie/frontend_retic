@@ -25,7 +25,7 @@ export default function OrgSignup() {
         <div className="flex h-screen items-center">
           <div className="hidden sm:block w-1/2">
             <h1 className="text-4xl text-center">Hi, Welcome</h1>
-            <h2 className="font-light text-center">Get Event Ticket</h2>
+            <h2 className="font-light text-center">Organisation Account</h2>
             <Image
               src={graphicsLogin}
               alt={"Signin and Signup"}
@@ -37,7 +37,7 @@ export default function OrgSignup() {
               <h1 className="text-2xl">Sign Up to your account</h1>
               <div className="flex gap-1">
                 Already have an account?
-                <Link href="/login" className="text-primary">
+                <Link href="/orglogin" className="text-primary">
                   Log in
                 </Link>
               </div>

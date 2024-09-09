@@ -3,7 +3,7 @@ import Image from "next/image";
 import { StickyScroll } from "./components/sticky-scroll-reveal";
 import { BackgroundGradientAnimation } from "./components/background-gradient-animation";
 import { Navbar } from "./components/Navbar";
-
+import img1 from '@/public/8ff238e5b5acb1cf34f2dd1e1e2bcbea.png'
 export default function Home() {
   const content = [
     {
@@ -13,7 +13,7 @@ export default function Home() {
       content: (
         <div className="h-full w-full flex items-center justify-center text-white">
           <Image
-            src="/ticket-listing.webp"
+            src={img1}
             width={300}
             height={300}
             className="h-full w-full object-cover"
@@ -29,11 +29,11 @@ export default function Home() {
       content: (
         <div className="h-full w-full flex items-center justify-center text-white">
           <Image
-            src="/ticket-purchase.webp"
+            src={img1}
             width={300}
             height={300}
             className="h-full w-full object-cover"
-            alt="ticket purchase demo"
+            alt="ticket listing demo"
           />
         </div>
       ),
@@ -45,11 +45,11 @@ export default function Home() {
       content: (
         <div className="h-full w-full flex items-center justify-center text-white">
           <Image
-            src="/ticket-resell.webp"
+            src={img1}
             width={300}
             height={300}
             className="h-full w-full object-cover"
-            alt="ticket resell demo"
+            alt="ticket listing demo"
           />
         </div>
       ),
@@ -60,12 +60,12 @@ export default function Home() {
         "Once purchased, tickets are securely stored in the buyer's digital wallet, ensuring authenticity and preventing fraud. Enjoy peace of mind with blockchain-backed ticketing.",
       content: (
         <div className="h-full w-full flex items-center justify-center text-white">
-          <Image
-            src="/ticket-verification.webp"
+        <Image
+            src={img1}
             width={300}
             height={300}
             className="h-full w-full object-cover"
-            alt="ticket verification demo"
+            alt="ticket listing demo"
           />
         </div>
       ),
@@ -77,11 +77,11 @@ export default function Home() {
       content: (
         <div className="h-full w-full flex items-center justify-center text-white">
           <Image
-            src="/smart-contract-security.webp"
+            src={img1}
             width={300}
             height={300}
             className="h-full w-full object-cover"
-            alt="smart contract demo"
+            alt="ticket listing demo"
           />
         </div>
       ),

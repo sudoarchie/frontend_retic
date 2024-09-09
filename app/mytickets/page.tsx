@@ -39,6 +39,7 @@ export default function MyTickets() {
             discription={info.description}
             image={info.image}
             url={info.url}
+            btnName="Sell Now"
           ></CardOne>
         ))}
       </div>

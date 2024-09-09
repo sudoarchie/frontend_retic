@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 
@@ -14,20 +14,26 @@ const menuItems = [
     href: "/events",
   },
   {
-    name: "Sell",
-    href: "/sell",
+    name: "My Tickets",
+    href: "/mytickets",
   },
-  {
-    name: "About",
-    href: "/about",
-  },
-  {
-    name: "Contact",
-    href: "/contact",
-  },
+ 
+  
 ];
 
 export function Navbar({ className }: { className?: string }) {
+
+
+  const [isTokenPresent, setIsTokenPresent] = useState(false);
+
+  useEffect(() => {
+    // Check if token exists in localStorage
+    const token = localStorage.getItem('usersToken');
+    setIsTokenPresent(!!token); // Set the state based on token presence
+  }, []);
+
+
+
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const toggleMenu = () => {
@@ -55,14 +61,22 @@ export function Navbar({ className }: { className?: string }) {
             ))}
           </ul>
         </div>
-        <div className="hidden lg:block">
+        {!isTokenPresent && (
+          <div className="hidden lg:flex gap-2">
           <button
             type="button"
             className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-          >
-            <Link href="/login">Login</Link>
+            >
+            <Link href="/login">User Login</Link>
+          </button>
+          <button
+            type="button"
+            className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+            >
+            <Link href="/orglogin">Org. Login</Link>
           </button>
         </div>
+          )}
         <div className="lg:hidden">
           <Menu onClick={toggleMenu} className="h-6 w-6 cursor-pointer" />
         </div>

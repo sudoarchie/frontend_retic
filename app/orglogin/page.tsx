@@ -34,10 +34,10 @@ export default function OrgLogin() {
           </div>
           <div className="w-full sm:w-1/2">
             <div className="mx-10 mb-5">
-              <h1 className="text-2xl">Sign in to your account</h1>
+              <h1 className="text-2xl">Sign In the Org account</h1>
               <div className="flex gap-1">
                 Don&apos;t have an account?
-                <Link href="/signup" className="text-primary">
+                <Link href="/orgsignup" className="text-primary">
                   Get started
                 </Link>
               </div>
