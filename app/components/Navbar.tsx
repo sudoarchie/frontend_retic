@@ -14,6 +14,10 @@ const menuItems = [
     href: "/events",
   },
   {
+    name: "Sell",
+    href: "/sell",
+  },
+  {
     name: "About",
     href: "/about",
   },

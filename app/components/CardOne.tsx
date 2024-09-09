@@ -7,8 +7,17 @@ interface card {
   discription: string;
   image: StaticImageData | string;
   url: string;
+  btnName?: string;
+  secBtnName?: string;
 }
-export function CardOne({ title, discription, image, url }: card) {
+export function CardOne({
+  title,
+  discription,
+  image,
+  url,
+  btnName,
+  secBtnName,
+}: card) {
   return (
     <div className="w-[300px] h-[500px]  border p-5 bg-white rounded-2xl m-1">
       <Image
@@ -39,8 +48,20 @@ export function CardOne({ title, discription, image, url }: card) {
             type="button"
             className="mt-4 w-full rounded-sm bg-primary px-2 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-primary/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
           >
-            Buy Now
+            {btnName ? btnName : "Buy Now"}
           </button>
+          {secBtnName ? (
+            <>
+              <button
+                type="button"
+                className="mt-4 w-full rounded-sm bg-primary px-2 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-primary/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+              >
+                {btnName ? btnName : "Buy Now"}
+              </button>
+            </>
+          ) : (
+            <></>
+          )}
         </Link>
       </div>
     </div>
