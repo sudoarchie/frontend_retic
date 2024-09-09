@@ -6,16 +6,20 @@ import { Navbar } from "../components/Navbar";
 import { InputField } from "../components/Inputfield";
 import { PrimaryButton } from "../components/PrimaryButton";
 import { useForm } from "react-hook-form";
+import UserSignup from "@/utils/mutations/userSignup";
 
 export default function Signup() {
+  const { mutate, data } = UserSignup();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data: any) => {
-    console.log(data); // Logs form data
+  const onSubmit = async (info: any) => {
+    console.log(info); // Logs form info
+    const data = await mutate(info);
+    console.log(data);
   };
 
   return (
@@ -49,7 +53,7 @@ export default function Signup() {
                       placeholder="John Smith"
                       className="w-full sm:w-[80%] mx-auto sm:mx-0"
                       type="text"
-                      name="fullName"
+                      name="name"
                       register={register}
                     />
                     {errors.fullName?.message &&

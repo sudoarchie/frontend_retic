@@ -6,6 +6,7 @@ import { Navbar } from "../components/Navbar";
 import { InputField } from "../components/Inputfield";
 import { PrimaryButton } from "../components/PrimaryButton";
 import { useForm } from "react-hook-form";
+import UserLogin from "@/utils/mutations/userLogin";
 
 export default function Login() {
   const {
@@ -13,9 +14,11 @@ export default function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
-  const onSubmit = (data: any) => {
-    console.log(data); // Logs form data
+  const { mutate, data } = UserLogin();
+  const onSubmit = async (info: any) => {
+    console.log("nwe");
+    await mutate(info); // Logs form data
+    localStorage.setItem("userToken", data.token);
   };
 
   return (

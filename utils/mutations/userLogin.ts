@@ -12,9 +12,11 @@ const UserLogin = () => {
     onMutate: () => {
       toast.loading("Waiting...");
     },
-    onSuccess: () => {
+    onSuccess: async (data) => {
+      console.log(data);
       toast.dismiss();
       toast.success("Form filled successfully");
+      return data;
     },
     onError: (err) => {
       toast.dismiss();
