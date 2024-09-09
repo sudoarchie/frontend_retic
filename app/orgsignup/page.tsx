@@ -7,7 +7,7 @@ import { InputField } from "../components/Inputfield";
 import { PrimaryButton } from "../components/PrimaryButton";
 import { useForm } from "react-hook-form";
 
-export default function Signup() {
+export default function OrgSignup() {
   const {
     register,
     handleSubmit,

@@ -7,7 +7,7 @@ import { InputField } from "../components/Inputfield";
 import { PrimaryButton } from "../components/PrimaryButton";
 import { useForm } from "react-hook-form";
 
-export default function Signup() {
+export default function OrgLogin() {
   const {
     register,
     handleSubmit,
@@ -24,8 +24,8 @@ export default function Signup() {
       <div className="max-w-screen-xl mx-auto bg-white">
         <div className="flex h-screen items-center">
           <div className="hidden sm:block w-1/2">
-            <h1 className="text-4xl text-center">Hi, Welcome</h1>
-            <h2 className="font-light text-center">Get Event Ticket</h2>
+            <h1 className="text-4xl text-center">Hi, Welcome back</h1>
+            {/* <h2 className="font-light text-center">Get Event Ticket</h2> */}
             <Image
               src={graphicsLogin}
               alt={"Signin and Signup"}
@@ -34,39 +34,22 @@ export default function Signup() {
           </div>
           <div className="w-full sm:w-1/2">
             <div className="mx-10 mb-5">
-              <h1 className="text-2xl">Sign Up to your account</h1>
+              <h1 className="text-2xl">Sign in to your account</h1>
               <div className="flex gap-1">
-                Already have an account?
-                <Link href="/login" className="text-primary">
-                  Log in
+                Don&apos;t have an account?
+                <Link href="/signup" className="text-primary">
+                  Get started
                 </Link>
               </div>
               <div className="mt-20">
                 <form onSubmit={handleSubmit(onSubmit)} className="mt-20">
                   <div>
                     <InputField
-                      label="Full Name"
-                      placeholder="John Smith"
-                      className="w-full sm:w-[80%] mx-auto sm:mx-0"
-                      type="text"
-                      name="fullName"
-                      register={register}
-                    />
-                    {errors.fullName?.message &&
-                      typeof errors.fullName.message === "string" && (
-                        <p className="text-red-500">
-                          {errors.fullName.message}
-                        </p>
-                      )}
-                  </div>
-
-                  <div>
-                    <InputField
                       label="Email Address"
                       placeholder="admin@gmail.com"
-                      className="w-full sm:w-[80%] mx-auto sm:mx-0 mt-10"
+                      className="w-full sm:w-[80%] mx-auto sm:mx-0"
                       type="text"
-                      name="email"
+                      name="email" // Provide the name for registering the field
                       register={register}
                     />
                     {errors.email?.message &&
@@ -75,25 +58,20 @@ export default function Signup() {
                       )}
                   </div>
 
-                  <div>
-                    <InputField
-                      label="Password"
-                      className="w-full sm:w-[80%] mt-10 mx-auto sm:mx-0"
-                      placeholder="8+ characters"
-                      type="password"
-                      name="password"
-                      register={register}
-                    />
-                    {errors.password?.message &&
-                      typeof errors.password.message === "string" && (
-                        <p className="text-red-500">
-                          {errors.password.message}
-                        </p>
-                      )}
-                  </div>
-
+                  <InputField
+                    label="Password"
+                    className="w-full sm:w-[80%] mt-10 mx-auto sm:mx-0"
+                    placeholder="8+ characters"
+                    type="password"
+                    name="password"
+                    register={register}
+                  />
+                  {errors.password?.message &&
+                    typeof errors.password.message === "string" && (
+                      <p className="text-red-500">{errors.password.message}</p>
+                    )}
                   <PrimaryButton
-                    Name="Sign Up"
+                    Name="Sign In"
                     type="submit"
                     className="w-full sm:w-[80%] mt-10 mx-auto sm:mx-0"
                   />
