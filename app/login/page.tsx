@@ -1,25 +1,37 @@
 "use client";
+
 import Image from "next/image";
 import graphicsLogin from "@/public/8ff238e5b5acb1cf34f2dd1e1e2bcbea.png";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Navbar } from "../components/Navbar";
 import { InputField } from "../components/Inputfield";
 import { PrimaryButton } from "../components/PrimaryButton";
 import { useForm } from "react-hook-form";
 import UserLogin from "@/utils/mutations/userLogin";
+import { useEffect } from "react";
 
 export default function Login() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { mutate, data } = UserLogin();
+  const { mutate, data, isSuccess } = UserLogin();
+
   const onSubmit = async (info: any) => {
-    console.log("nwe");
-    await mutate(info); // Logs form data
-    localStorage.setItem("userToken", data.token);
+    console.log("new submission");
+    await mutate(info);
   };
+
+  useEffect(() => {
+    if (isSuccess && data && data.token) {
+      localStorage.setItem("userToken", data.token);
+      console.log("Login successful, token stored");
+      router.push("/events");
+    }
+  }, [isSuccess, data, router]);
 
   return (
     <>
@@ -52,7 +64,7 @@ export default function Login() {
                       placeholder="admin@gmail.com"
                       className="w-full sm:w-[80%] mx-auto sm:mx-0"
                       type="text"
-                      name="email" // Provide the name for registering the field
+                      name="email"
                       register={register}
                     />
                     {errors.email?.message &&
