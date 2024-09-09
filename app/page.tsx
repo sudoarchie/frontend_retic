@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { BackgroundLines } from "./components/background-lines";
 import { StickyScroll } from "./components/sticky-scroll-reveal";
+import { BackgroundGradientAnimation } from "./components/background-gradient-animation";
+import { Navbar } from "./components/Navbar";
 
 export default function Home() {
   const content = [
@@ -103,8 +105,9 @@ export default function Home() {
   ];
   return (
     <div>
-      <BackgroundLines>
-        <div className=" flex flex-col items-center justify-center h-screen ">
+      <Navbar className={"z-50"}></Navbar>
+      <BackgroundGradientAnimation>
+        <div className=" flex flex-col items-center justify-center h-screen text-white">
           <h1 className="text-8xl  text-center leading-tight">
             Fixing the<br></br> ticketing
             <br /> industry
@@ -116,7 +119,7 @@ export default function Home() {
             revolutionizing event access.
           </p>
         </div>
-      </BackgroundLines>
+      </BackgroundGradientAnimation>
       <StickyScroll content={content}></StickyScroll>
     </div>
   );

@@ -2,23 +2,28 @@
 
 import React from "react";
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 
 const menuItems = [
   {
     name: "Home",
-    href: "#",
+    href: "/",
+  },
+  {
+    name: "Events",
+    href: "/events",
   },
   {
     name: "About",
-    href: "#",
+    href: "/about",
   },
   {
     name: "Contact",
-    href: "#",
+    href: "/contact",
   },
 ];
 
-export function Navbar() {
+export function Navbar({ className }: { className?: string }) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const toggleMenu = () => {
@@ -26,11 +31,11 @@ export function Navbar() {
   };
 
   return (
-    <div className="relative w-full bg-white">
+    <div className={`  w-full bg-white ${className} `}>
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
         <div className="inline-flex items-center space-x-2">
           {/* <span>//image logo</span> */}
-          <span className="font-bold text-black">RETIC</span>
+          <span className="font-bold text-black">RETICK</span>
         </div>
         <div className="hidden lg:block">
           <ul className="inline-flex space-x-8">
@@ -51,7 +56,7 @@ export function Navbar() {
             type="button"
             className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
           >
-            Login
+            <Link href="/login">Login</Link>
           </button>
         </div>
         <div className="lg:hidden">
