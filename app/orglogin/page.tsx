@@ -1,26 +1,38 @@
 "use client";
+
 import Image from "next/image";
 import graphicsLogin from "@/public/8ff238e5b5acb1cf34f2dd1e1e2bcbea.png";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Navbar } from "../components/Navbar";
 import { InputField } from "../components/Inputfield";
 import { PrimaryButton } from "../components/PrimaryButton";
 import { useForm } from "react-hook-form";
 import EventLogin from "@/utils/mutations/eventLogin";
+import { useEffect } from "react";
 
 export default function OrgLogin() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { mutate, data } = EventLogin();
+  const { mutate, data, isSuccess } = EventLogin();
+
   const onSubmit = async (info: any) => {
     console.log(info); // Logs form info
     await mutate(info);
-    console.log(data);
-    localStorage.setItem("eventOrganiserToken", data.token);
   };
+
+  useEffect(() => {
+    if (isSuccess && data && data.token) {
+      localStorage.setItem("eventOrganiserToken", data.token);
+      console.log("Login successful, token stored");
+      // Redirect to appropriate page after successful login
+      router.push("/eventform"); // Change '/dashboard' to your desired route
+    }
+  }, [isSuccess, data, router]);
 
   return (
     <>
@@ -29,7 +41,6 @@ export default function OrgLogin() {
         <div className="flex h-screen items-center">
           <div className="hidden sm:block w-1/2">
             <h1 className="text-4xl text-center">Hi, Welcome back</h1>
-            {/* <h2 className="font-light text-center">Get Event Ticket</h2> */}
             <Image
               src={graphicsLogin}
               alt={"Signin and Signup"}
@@ -53,7 +64,7 @@ export default function OrgLogin() {
                       placeholder="admin@gmail.com"
                       className="w-full sm:w-[80%] mx-auto sm:mx-0"
                       type="text"
-                      name="email" // Provide the name for registering the field
+                      name="email"
                       register={register}
                     />
                     {errors.email?.message &&

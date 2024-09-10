@@ -5,8 +5,8 @@ import Link from "next/link";
 interface card {
   title: string;
   discription: string;
-  image: StaticImageData | string;
-  url: string;
+  image: string;
+  url?: string;
   btnName?: string;
   secBtnName?: string;
 }
@@ -20,7 +20,7 @@ export function CardOne({
 }: card) {
   return (
     <div className="w-[300px] h-[500px]  border p-5 bg-white rounded-2xl m-1">
-      <Image
+      <img
         src={image}
         alt={title}
         width="300"
@@ -43,7 +43,7 @@ export function CardOne({
             #Laptop
           </span>
         </div> */}
-        <Link href={url}>
+        <Link href={url ? url : ""}>
           <button
             type="button"
             className="mt-4 w-full rounded-sm bg-primary px-2 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-primary/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"

@@ -17,22 +17,16 @@ const menuItems = [
     name: "My Tickets",
     href: "/mytickets",
   },
- 
-  
 ];
 
 export function Navbar({ className }: { className?: string }) {
-
-
   const [isTokenPresent, setIsTokenPresent] = useState(false);
 
   useEffect(() => {
     // Check if token exists in localStorage
-    const token = localStorage.getItem('usersToken');
+    const token = localStorage.getItem("userToken");
     setIsTokenPresent(!!token); // Set the state based on token presence
   }, []);
-
-
 
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
@@ -63,20 +57,20 @@ export function Navbar({ className }: { className?: string }) {
         </div>
         {!isTokenPresent && (
           <div className="hidden lg:flex gap-2">
-          <button
-            type="button"
-            className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+            <button
+              type="button"
+              className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
             >
-            <Link href="/login">User Login</Link>
-          </button>
-          <button
-            type="button"
-            className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+              <Link href="/login">User Login</Link>
+            </button>
+            <button
+              type="button"
+              className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
             >
-            <Link href="/orglogin">Org. Login</Link>
-          </button>
-        </div>
-          )}
+              <Link href="/orglogin">Org. Login</Link>
+            </button>
+          </div>
+        )}
         <div className="lg:hidden">
           <Menu onClick={toggleMenu} className="h-6 w-6 cursor-pointer" />
         </div>
