@@ -25,7 +25,8 @@ export default function Event() {
               title={event.eventName}
               discription={event.about}
               image={event.image}
-              // url={event.url} // Uncomment if url is available and needed
+              btnOneOnClick={() => console.log("hi")}
+              url={event.url} 
             />
           ))}
         </div>
